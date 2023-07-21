@@ -1,4 +1,4 @@
-package com.example.project_growgh
+package com.example.project_growgh.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -9,11 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.project_growgh.retrofitfiles.ImagesAPI
-import com.example.project_growgh.retrofitfiles.ImagesAPIInstance
+import com.example.project_growgh.FeedsAdapter
+import com.example.project_growgh.FeedsItem
+import com.example.project_growgh.NetworkConnection
+import com.example.project_growgh.R
+import com.example.project_growgh.ApiFiles.imagesApi.ImagesAPI
+import com.example.project_growgh.ApiFiles.imagesApi.ImagesAPIInstance
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,7 +50,7 @@ class FeedsScreenFragment : Fragment() {
             networkConnection = NetworkConnection(context)
 
             imagesApiInstance =
-                ImagesAPIInstance.getInstance().create(ImagesAPI::class.java)
+                ImagesAPIInstance.getImagesApiInstance().create(ImagesAPI::class.java)
 
             networkConnection.observe(viewLifecycleOwner, Observer { isAvailable ->
                 when (isAvailable) {
@@ -74,6 +81,10 @@ class FeedsScreenFragment : Fragment() {
                     }
                 }
             })
+
+            findViewById<FloatingActionButton>(R.id.fab_upload_image).setOnClickListener {
+                findNavController().navigate(R.id.action_homeScreen_to_uploadImageFragment2)
+            }
         }
 
         return v

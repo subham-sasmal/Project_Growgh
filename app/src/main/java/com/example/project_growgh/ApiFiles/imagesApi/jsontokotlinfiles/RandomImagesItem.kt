@@ -1,4 +1,4 @@
-package com.example.project_growgh.retrofitfiles
+package com.example.project_growgh.ApiFiles.imagesApi.jsontokotlinfiles
 
 data class RandomImagesItem(
     val avatar_url: String,

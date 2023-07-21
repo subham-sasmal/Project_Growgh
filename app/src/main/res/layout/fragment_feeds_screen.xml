@@ -1,157 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".FeedsScreenFragment">
+    tools:context=".ui.FeedsScreenFragment">
 
-    <View
-        android:id="@+id/top_view"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/top_view_bg"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_hello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:text="Hello,"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/top_view"
-        app:layout_constraintTop_toTopOf="@+id/top_view" />
-
-    <TextView
-        android:id="@+id/tv_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Username"
-        android:textColor="@color/white"
-        android:textSize="33sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_hello"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hello" />
-
-    <View
-        android:id="@+id/view_circle"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/ready_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_hello" />
-
-    <View
-        android:id="@+id/feedsScreen_search_bar"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:background="@drawable/search_bar_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/top_view"
-        app:layout_constraintEnd_toEndOf="@+id/view_circle"
-        app:layout_constraintStart_toStartOf="@+id/tv_hello"
-        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
-
-    <ImageView
-        android:id="@+id/search_icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:src="@drawable/search_icon_image"
-        app:layout_constraintBottom_toBottomOf="@+id/feedsScreen_search_bar"
-        app:layout_constraintStart_toStartOf="@+id/feedsScreen_search_bar"
-        app:layout_constraintTop_toTopOf="@+id/feedsScreen_search_bar" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="3dp"
-        android:text="Explore"
-        android:textSize="23sp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/feedsScreen_search_bar"
-        app:layout_constraintStart_toEndOf="@+id/search_icon"
-        app:layout_constraintTop_toTopOf="@+id/feedsScreen_search_bar" />
-
-    <View
-        android:id="@+id/bottom_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_view"
-        app:layout_constraintVertical_weight="2.7" />
-
-    <TextView
-        android:id="@+id/tv_browse_by"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Browse By"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/feedsScreen_search_bar"
-        app:layout_constraintTop_toBottomOf="@+id/top_view" />
-
-    <TextView
-        android:id="@+id/tv_latest"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/browse_options_bg"
-        android:gravity="center"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:layout_marginTop="12dp"
-        android:text="Latest"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/tv_browse_by"
-        app:layout_constraintStart_toStartOf="@+id/tv_browse_by"
-        app:layout_constraintTop_toBottomOf="@+id/tv_browse_by" />
-
-    <TextView
-        android:id="@+id/tv_older"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/browse_options_bg"
-        android:gravity="center"
-        android:paddingTop="2dp"
-        android:paddingBottom="2dp"
-        android:layout_marginStart="25dp"
-        android:text="Older"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_latest"
-        app:layout_constraintStart_toEndOf="@+id/tv_latest"
-        app:layout_constraintTop_toTopOf="@+id/tv_latest" />
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeForRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bottom_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_older">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_feeds_holder"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/top_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/top_view_bg"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_hello"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Hello,"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        app:layout_constraintStart_toStartOf="@+id/top_view"
+                        app:layout_constraintTop_toTopOf="@+id/top_view" />
+
+                    <TextView
+                        android:id="@+id/tv_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Username"
+                        android:textColor="@color/white"
+                        android:textSize="33sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_hello"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_hello" />
+
+                    <View
+                        android:id="@+id/view_circle"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="25dp"
+                        android:background="@drawable/ready_bg"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_username"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_hello" />
+
+                    <View
+                        android:id="@+id/feedsScreen_search_bar"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/search_bar_bg"
+                        app:layout_constraintBottom_toBottomOf="@+id/top_view"
+                        app:layout_constraintEnd_toEndOf="@+id/view_circle"
+                        app:layout_constraintStart_toStartOf="@+id/tv_hello"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+                    <ImageView
+                        android:id="@+id/search_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:src="@drawable/search_icon_image"
+                        app:layout_constraintBottom_toBottomOf="@+id/feedsScreen_search_bar"
+                        app:layout_constraintStart_toStartOf="@+id/feedsScreen_search_bar"
+                        app:layout_constraintTop_toTopOf="@+id/feedsScreen_search_bar" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="Explore"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/feedsScreen_search_bar"
+                        app:layout_constraintStart_toEndOf="@+id/search_icon"
+                        app:layout_constraintTop_toTopOf="@+id/feedsScreen_search_bar" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <View
+                android:id="@+id/bottom_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_wrapBehaviorInParent="vertical_only"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="2.7" />
+
+            <TextView
+                android:id="@+id/tv_browse_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Browse By"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_latest"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/browse_options_bg"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="Latest"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/tv_browse_by"
+                app:layout_constraintStart_toStartOf="@+id/tv_browse_by"
+                app:layout_constraintTop_toBottomOf="@+id/tv_browse_by" />
+
+            <TextView
+                android:id="@+id/tv_older"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:background="@drawable/browse_options_bg"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="Older"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_latest"
+                app:layout_constraintStart_toEndOf="@+id/tv_latest"
+                app:layout_constraintTop_toTopOf="@+id/tv_latest" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_upload_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:backgroundTint="@color/light_blue_900"
+                android:src="@drawable/fab_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/swipeForRefresh"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeForRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/bottom_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_older">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_feeds_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

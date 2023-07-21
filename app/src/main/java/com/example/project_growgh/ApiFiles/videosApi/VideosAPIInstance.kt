@@ -1,15 +1,16 @@
-package com.example.project_growgh.retrofitfiles
+package com.example.project_growgh.ApiFiles.videosApi
 
+import com.example.project_growgh.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ImagesAPIInstance {
+object VideosAPIInstance {
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
+        .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun getInstance(): Retrofit {
+    fun getVideoApiInstance(): Retrofit {
         return retrofit
     }
 }

@@ -5,4 +5,6 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore manga aliqua. Ut enim adminim veniam</string>
+    <string name="title_activity_growgh_maps">GrowghMapsActivity</string>
+    <string name="title_activity_google_maps">GoogleMaps</string>
 </resources>

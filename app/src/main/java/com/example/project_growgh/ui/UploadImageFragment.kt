@@ -1,8 +1,7 @@
-package com.example.project_growgh
+package com.example.project_growgh.ui
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,9 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.findNavController
-import java.io.File
+import com.example.project_growgh.R
+import com.vmadalin.easypermissions.EasyPermissions
+import com.vmadalin.easypermissions.dialogs.SettingsDialog
 
-class UploadImageFragment : Fragment() {
+class UploadImageFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     private lateinit var btnSelectImage: TextView
     private lateinit var imageSelected: ImageView
     private lateinit var clearImage: ImageView
@@ -36,10 +37,8 @@ class UploadImageFragment : Fragment() {
             }
 
             btnSelectImage.setOnClickListener() {
-                Intent(Intent.ACTION_GET_CONTENT).also {
-                    it.type = "image/*"
-                    resultLauncher.launch(it)
-                }
+                requestForGalleryAccess()
+                openGallery()
             }
 
             clearImage.setOnClickListener {
@@ -53,6 +52,20 @@ class UploadImageFragment : Fragment() {
         return v
     }
 
+    private fun hasGalleryPermission() = EasyPermissions.hasPermissions(
+        requireContext(),
+        android.Manifest.permission.READ_EXTERNAL_STORAGE
+    )
+
+    private fun requestForGalleryAccess() {
+        EasyPermissions.requestPermissions(
+            this,
+            "Please give storage access",
+            1,
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+    }
+
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -62,4 +75,37 @@ class UploadImageFragment : Fragment() {
                 }
             }
         }
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: List<String>) {
+        if (EasyPermissions.somePermissionDenied(this, perms.first())) {
+            SettingsDialog.Builder(requireActivity()).build().show()
+        } else {
+            requestForGalleryAccess()
+        }
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
+        openGallery()
+    }
+
+    private fun openGallery() {
+//        requestForGalleryAccess()
+
+        if (hasGalleryPermission()) {
+            Intent(Intent.ACTION_GET_CONTENT).also {
+                it.type = "image/*"
+                resultLauncher.launch(it)
+            }
+        }
+    }
 }

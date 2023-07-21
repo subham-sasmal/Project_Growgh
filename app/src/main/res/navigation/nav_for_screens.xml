@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment2"
-        android:name="com.example.project_growgh.SplashFragment"
+        android:name="com.example.project_growgh.ui.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -34,24 +34,30 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.example.project_growgh.HomeScreen"
+        android:name="com.example.project_growgh.ui.HomeScreen"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
             android:id="@+id/action_homeScreen_to_uploadImageFragment2"
             app:destination="@id/uploadImageFragment2" />
-        <action
-            android:id="@+id/action_homeScreen_to_feedsScreenFragment"
-            app:destination="@id/feedsScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/uploadImageFragment2"
-        android:name="com.example.project_growgh.UploadImageFragment"
+        android:name="com.example.project_growgh.ui.UploadImageFragment"
         android:label="fragment_upload_image"
         tools:layout="@layout/fragment_upload_image" />
     <fragment
         android:id="@+id/feedsScreenFragment"
-        android:name="com.example.project_growgh.FeedsScreenFragment"
+        android:name="com.example.project_growgh.ui.FeedsScreenFragment"
         android:label="fragment_feeds_screen"
-        tools:layout="@layout/fragment_feeds_screen" />
+        tools:layout="@layout/fragment_feeds_screen" >
+        <action
+            android:id="@+id/action_feedsScreenFragment_to_uploadImageFragment2"
+            app:destination="@id/uploadImageFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsScreen"
+        android:name="com.example.project_growgh.ui.MapsScreen"
+        android:label="fragment_maps_screen"
+        tools:layout="@layout/fragment_maps_screen" />
 </navigation>

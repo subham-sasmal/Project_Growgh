@@ -25,7 +25,7 @@ class ViewPagerFragment : Fragment() {
                 OnBoardingThirdScreen()
             )
 
-            val adapter = ViewPagerAdapter(
+            val adapter = OnBoardingViewPagerAdapter(
                 fragmentList,
                 requireActivity().supportFragmentManager,
                 lifecycle
